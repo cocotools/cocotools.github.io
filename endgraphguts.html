@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to CoCoTools! &mdash; CoCoTools 0.0.1 documentation</title>
+    <title>Coordinate-free registration in even more detail &mdash; CoCoTools 0.0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,8 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="CoCoTools 0.0.1 documentation" href="#" />
-    <link rel="next" title="Installation Instructions" href="install.html" /> 
+    <link rel="top" title="CoCoTools 0.0.1 documentation" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,28 +37,14 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="right" >
-          <a href="install.html" title="Installation Instructions"
-             accesskey="N">next</a> |</li>
-        <li><a href="#">CoCoTools 0.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">CoCoTools 0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Welcome to CoCoTools!</a><ul>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Next topic</h4>
-  <p class="topless"><a href="install.html"
-                        title="next chapter">Installation Instructions</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
+    <li><a href="_sources/endgraphguts.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -83,28 +68,10 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="welcome-to-cocotools">
-<h1>Welcome to CoCoTools!<a class="headerlink" href="#welcome-to-cocotools" title="Permalink to this headline">¶</a></h1>
-<p><strong>CoCoTools</strong> is a library that provides utilities for working with the data stored on the CoCoMac macaque neuroanatomical data stored on the <strong>CoCoTools</strong> database.
-Using only high-level commands, users of <strong>CoCoTools</strong> can query, process and register the
-wealth of CoCoMac data to create customized matrices (graphs) depicting the macro-connections of the macaque brain.</p>
-<p><strong>Contents:</strong></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation Instructions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">CoCoTools&#8217;s documentation</a></li>
-</ul>
-</div>
-<p>We also have a collection of  <a class="reference external" href="https://github.com/cocotools/CoCoTools/tree/master/examples#a-collection-of-notebooks-for-using-cocotools">Interactive Notebook Examples</a>.</p>
-<p>To download data from the Methods paper go <a class="reference internal" href="downloads.html#data-download"><em>here</em></a></p>
-<div class="section" id="indices-and-tables">
-<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
-</ul>
-</div>
+  <div class="section" id="coordinate-free-registration-in-even-more-detail">
+<h1>Coordinate-free registration in even more detail<a class="headerlink" href="#coordinate-free-registration-in-even-more-detail" title="Permalink to this headline">¶</a></h1>
+<p id="endgraph-guts">Here we will run through the steps of ORT and mORT for one edge. We will focus on what each step is doing conceptually and then, when helpful we will provide a reference to the private functions that accomplishes this. All of these functions are located in the endgraph.py</p>
+<p>First lets identify one edge that want to translate</p>
 </div>
 
 
@@ -122,10 +89,7 @@ wealth of CoCoMac data to create customized matrices (graphs) depicting the macr
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="right" >
-          <a href="install.html" title="Installation Instructions"
-             >next</a> |</li>
-        <li><a href="#">CoCoTools 0.0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">CoCoTools 0.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
