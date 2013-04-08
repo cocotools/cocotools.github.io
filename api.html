@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API reference &mdash; CoCoTools 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="CoCoTools 0.0.1 documentation" href="index.html" />
+    <link rel="up" title="CoCoTools’s documentation" href="documentation.html" />
+    <link rel="prev" title="Notes on running the Infomap Code" href="infomap.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="infomap.html" title="Notes on running the Infomap Code"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CoCoTools 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="documentation.html" accesskey="U">CoCoTools&#8217;s documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">API reference</a><ul>
+<li><a class="reference internal" href="#query-related-functions">Query-related functions</a></li>
+<li><a class="reference internal" href="#pre-processing">Pre-Processing</a></li>
+<li><a class="reference internal" href="#coordinate-free-registration">Coordinate-free registration</a></li>
+<li><a class="reference internal" href="#post-processing">Post-processing</a></li>
+<li><a class="reference internal" href="#main-classes">Main classes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="infomap.html"
+                        title="previous chapter">Notes on running the Infomap Code</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/api.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="api-reference">
+<h1>API reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<p>The following is the public API (Application Programming Interface) for
+CoCoTools.  Any module, class or function not listed here should be considered
+a private implementation detailed and is subject to change without notice in
+future releases.</p>
+<span class="target" id="module-cocotools"></span><div class="section" id="query-related-functions">
+<h2>Query-related functions<a class="headerlink" href="#query-related-functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="cocotools.multi_map_ebunch">
+<tt class="descclassname">cocotools.</tt><tt class="descname">multi_map_ebunch</tt><big>(</big><em>search_type</em>, <em>subset=False</em><big>)</big><a class="headerlink" href="#cocotools.multi_map_ebunch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct and return ebunch from data for several BrainMaps.</p>
+<p>Also return the BrainMaps for which queries failed.</p>
+<dl class="docutils">
+<dt>search_type <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>&#8216;Mapping&#8217; or &#8216;Connectivity&#8217;</dd>
+<dt>subset <span class="classifier-delimiter">:</span> <span class="classifier">sequence or string (optional)</span></dt>
+<dd>Subset of BrainMaps to query.  Default is to query all BrainMaps in
+CoCoMac.  If a string is supplied, it must be the name of a text
+file with one BrainMap per line.</dd>
+</dl>
+<dl class="docutils">
+<dt>big_ebunch <span class="classifier-delimiter">:</span> <span class="classifier">list of tuples</span></dt>
+<dd>Each tuple specifies a source and target node and edge attributes.</dd>
+<dt>failures <span class="classifier-delimiter">:</span> <span class="classifier">list of strings</span></dt>
+<dd>These are the BrainMaps for which no data were acquired.</dd>
+</dl>
+<p>Querying a BrainMap for which there is only Mapping data using the
+Connectivity search type would result in its being a failure.
+Failures can also result from CoCoMac server errors.</p>
+<p>The term ebunch, borrowed from NetworkX, refers to a sequence of
+graph theory edges.</p>
+<p>Integrated primary projections are returned for Connectivity queries,
+and primary relations are returned for Mapping queries.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cocotools.query_maps_by_area">
+<tt class="descclassname">cocotools.</tt><tt class="descname">query_maps_by_area</tt><big>(</big><em>search_type</em>, <em>subset=False</em><big>)</big><a class="headerlink" href="#cocotools.query_maps_by_area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct and return ebunch from data for several BrainMaps.</p>
+<p>Also return the BrainMaps for which queries failed.</p>
+<dl class="docutils">
+<dt>search_type <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>&#8216;Mapping&#8217; or &#8216;Connectivity&#8217;</dd>
+<dt>subset <span class="classifier-delimiter">:</span> <span class="classifier">sequence or string (optional)</span></dt>
+<dd>Subset of BrainMaps to query.  Default is to query all BrainMaps in
+CoCoMac.  If a string is supplied, it must be the name of a text
+file with one BrainMap per line.</dd>
+</dl>
+<dl class="docutils">
+<dt>big_ebunch <span class="classifier-delimiter">:</span> <span class="classifier">list of tuples</span></dt>
+<dd>Each tuple specifies a source and target node and edge attributes.</dd>
+<dt>failures <span class="classifier-delimiter">:</span> <span class="classifier">list of strings</span></dt>
+<dd>These are the BrainMaps for which no data were acquired.</dd>
+</dl>
+<p>Querying a BrainMap for which there is only Mapping data using the
+Connectivity search type would result in its being a failure.
+Failures can also result from CoCoMac server errors.</p>
+<p>The term ebunch, borrowed from NetworkX, refers to a sequence of
+graph theory edges.</p>
+<p>Integrated primary projections are returned for Connectivity queries,
+and primary relations are returned for Mapping queries.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="pre-processing">
+<h2>Pre-Processing<a class="headerlink" href="#pre-processing" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="cocotools.MapGraph.clean_data">
+<tt class="descclassname">MapGraph.</tt><tt class="descname">clean_data</tt><big>(</big><big>)</big><a class="headerlink" href="#cocotools.MapGraph.clean_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove errors and add missing data.</p>
+<p>See comments for more information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cocotools.MapGraph.keep_only_one_level_of_resolution">
+<tt class="descclassname">MapGraph.</tt><tt class="descname">keep_only_one_level_of_resolution</tt><big>(</big><em>cong</em>, <em>target_map</em><big>)</big><a class="headerlink" href="#cocotools.MapGraph.keep_only_one_level_of_resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine each map&#8217;s hierarchy and keep only one level.</p>
+<dl class="docutils">
+<dt>cong <span class="classifier-delimiter">:</span> <span class="classifier">ConGraph instance</span></dt>
+<dd>Associated Connectivity data.</dd>
+<dt>target_map <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>Name of BrainMap to which translation will be performed.</dd>
+</dl>
+<dl class="docutils">
+<dt>cong <span class="classifier-delimiter">:</span> <span class="classifier">ConGraph instance</span></dt>
+<dd>Updated Connectivity data.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="cocotools.MapGraph.deduce_edges">
+<tt class="descclassname">MapGraph.</tt><tt class="descname">deduce_edges</tt><big>(</big><big>)</big><a class="headerlink" href="#cocotools.MapGraph.deduce_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deduce new edges based on those in the graph and add them.</p>
+<p>Intra-map edges are disallowed.  It is assumed that all regions
+in the graph from the same BrainMap are disjoint (i.e., at the same
+level of resolution).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="coordinate-free-registration">
+<h2>Coordinate-free registration<a class="headerlink" href="#coordinate-free-registration" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="cocotools.EndGraph.add_translated_edges">
+<tt class="descclassname">EndGraph.</tt><tt class="descname">add_translated_edges</tt><big>(</big><em>mapp</em>, <em>conn</em>, <em>desired_map</em>, <em>method</em><big>)</big><a class="headerlink" href="#cocotools.EndGraph.add_translated_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate edges in conn to nomenclature of desired_bmap.</p>
+<p>Add all desired_map nodes in mapp to this graph.</p>
+<dl class="docutils">
+<dt>mapp <span class="classifier-delimiter">:</span> <span class="classifier">MapGraph</span></dt>
+<dd>Graph of spatial relationships between BrainSites from various
+BrainMaps.</dd>
+<dt>conn <span class="classifier-delimiter">:</span> <span class="classifier">ConGraph</span></dt>
+<dd>Graph of anatomical connections between BrainSites.</dd>
+<dt>desired_map <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>Name of BrainMap to which translation will be performed.</dd>
+<dt>method <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>AT method to be used: &#8216;original&#8217; (that of Stephan &amp; Kotter)
+or &#8216;modified&#8217;</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="post-processing">
+<h2>Post-processing<a class="headerlink" href="#post-processing" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="cocotools.strip_absent_and_unknown_edges">
+<tt class="descclassname">cocotools.</tt><tt class="descname">strip_absent_and_unknown_edges</tt><big>(</big><em>end</em><big>)</big><a class="headerlink" href="#cocotools.strip_absent_and_unknown_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return graph with known-absent edges removed.</p>
+<p>Do not modify the graph passed as input; return a new graph.</p>
+<dl class="docutils">
+<dt>end <span class="classifier-delimiter">:</span> <span class="classifier">EndGraph</span></dt>
+<dd>EndGraph after translated edges have been added.</dd>
+</dl>
+<dl class="docutils">
+<dt>g <span class="classifier-delimiter">:</span> <span class="classifier">NetworkX DiGraph</span></dt>
+<dd>Graph with those edges in EndGraph known to be present.  Edge
+attributes are not transferred to this graph.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="main-classes">
+<h2>Main classes<a class="headerlink" href="#main-classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cocotools.MapGraph">
+<em class="property">class </em><tt class="descclassname">cocotools.</tt><tt class="descname">MapGraph</tt><a class="headerlink" href="#cocotools.MapGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subclass of the NetworkX DiGraph designed to hold CoCoMac Mapping data.</p>
+<p>Each node must be specified in CoCoMac format as a string:
+&#8216;BrainMap-BrainSite&#8217;.  Nodes not in this format are rejected.  Node
+attributes are not allowed.</p>
+<p>Edges have the following attributes (but only RC and PDC should be
+supplied by the user):</p>
+<p>(1) RC (relation code).  Allowable values are &#8216;I&#8217; (identical to),
+&#8216;S&#8217; (smaller than), &#8216;L&#8217; (larger than), or &#8216;O&#8217; (overlaps with).  These
+values complete the sentence, The source node is _____ the target node.</p>
+<p>(2) TP (transformation path).  This is a list of regions representing
+the chain of relationships (the path within the graph) that mediates
+the relationship between the source and the target.  When the
+relationship between the source and the target has been pulled directly
+from the literature, TP is an empty list.  When source&#8217;s relationship
+to target is known because of source&#8217;s relationship to region X and
+region X&#8217;s relationship to target, TP is [&#8216;X&#8217;].  The list grows with
+the number of intervening nodes.  Of note, the TP for the edge from
+target to source must be the reverse of the TP for the edge from
+source to target.</p>
+<p>(3) PDC (precision description code).  An integer (from zero to 18,
+with zero being the best) corresponding to an index in the PDC
+hierarchy (cocotools.query.PDC_HIER), which was developed by the
+CoCoMac curators.  Entries in the hierarchy represent levels of
+precision with which a statement in the original literature can be
+made.  When the edge is absent from the literature and has been
+deduced based on other edges (i.e., when the TP length is greater
+than zero), the PDC corresponds to the worst PDC of the edges
+represented by TP.</p>
+<p>Accurate deduction of new spatial relationships among regions and
+accurate translation of connectivity data between maps demand that each
+map be represented at just one level of resolution.  This implies that
+when a suite of spatially related regions from the same map is
+identified, one or more regions must be excluded from the MapGraph
+until all remaining are disjoint.</p>
+<p>When keep_only_one_level_of_resolution is called, all but one level of
+resolution is removed from the graph (and cong).  The level with the
+most anatomical connections (i.e., edges in cong) is chosen; in the
+event of a tie, the finest level of resolution is chosen for all maps
+but the target map, for which the coarsest level of resolution is
+chosen.</p>
+<p>Redundant nodes within a map are merged into a single node in this
+graph and in the associated ConGraph.  A name for the node is chosen
+from the list of redundant ones arbitrarily.</p>
+<p>New spatial relationships are deduced using an enhanced version of
+Objective Relational Transformation (ORT) with the deduce_edges method.
+The strategy used in MapGraph for handling intra-map spatial
+relationships described above ensures that levels of resolution will
+not be mixed within maps when deduce_edges is called.  This allows
+deduce_edges to assume all regions within a map are disjoint, which
+enables, after all possible deductions have been made, automatic
+identification and removal of relationships that cannot be true due to
+their implication (in combination with other known relationships) of
+spatial overlap between regions in the same map.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cocotools.ConGraph">
+<em class="property">class </em><tt class="descclassname">cocotools.</tt><tt class="descname">ConGraph</tt><big>(</big><em>data=None</em>, <em>**attr</em><big>)</big><a class="headerlink" href="#cocotools.ConGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subclass of the NetworkX DiGraph designed to hold Connectivity data.</p>
+<p>The DiGraph methods add_edge and add_edges_from have been overridden,
+to enforce that edges have valid attributes with the highest likelihood
+of correctness referring to their extension codes (ECs), precision
+description codes (PDCs), and degree.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="cocotools.EndGraph">
+<em class="property">class </em><tt class="descclassname">cocotools.</tt><tt class="descname">EndGraph</tt><big>(</big><em>data=None</em>, <em>**attr</em><big>)</big><a class="headerlink" href="#cocotools.EndGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subclass of the NetworkX DiGraph designed to hold post-ORT data.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="infomap.html" title="Notes on running the Infomap Code"
+             >previous</a> |</li>
+        <li><a href="index.html">CoCoTools 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="documentation.html" >CoCoTools&#8217;s documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Daniel Bliss, Rob Blumenfeld and Fernando Perez.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

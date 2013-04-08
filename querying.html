@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Querying &mdash; CoCoTools 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="CoCoTools 0.0.1 documentation" href="index.html" />
+    <link rel="up" title="Processing Pipeline in Detail" href="details.html" />
+    <link rel="next" title="Pre-Processing Query Results" href="preprocessing.html" />
+    <link rel="prev" title="Processing Pipeline in Detail" href="details.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="preprocessing.html" title="Pre-Processing Query Results"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="details.html" title="Processing Pipeline in Detail"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CoCoTools 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="documentation.html" >CoCoTools&#8217;s documentation</a> &raquo;</li>
+          <li><a href="details.html" accesskey="U">Processing Pipeline in Detail</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Querying</a><ul>
+<li><a class="reference internal" href="#querying-the-hard-way">Querying the <em>hard</em> way</a></li>
+<li><a class="reference internal" href="#querying-the-easy-way-using-cocotools">Querying the <em>easy</em> way using CoCoTools</a><ul>
+<li><a class="reference internal" href="#search-type-mandatory">Search type (<em>mandatory</em>)</a></li>
+<li><a class="reference internal" href="#subset-optional">Subset (<em>optional</em>)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#query-map-by-area">Query map by area</a></li>
+<li><a class="reference internal" href="#ebunch-format">ebunch format</a></li>
+<li><a class="reference internal" href="#mapgraphs-and-congraphs-cocotool-directed-graph-container-variables">mapgraphs and congraphs: CoCoTool directed graph container variables</a></li>
+<li><a class="reference internal" href="#local-cache">local cache</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="details.html"
+                        title="previous chapter">Processing Pipeline in Detail</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="preprocessing.html"
+                        title="next chapter">Pre-Processing Query Results</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/querying.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="querying">
+<h1>Querying<a class="headerlink" href="#querying" title="Permalink to this headline">¶</a></h1>
+<p id="detail-querying">Here is where you can learn about how to query the CoCoMac database using CoCoTools</p>
+<div class="section" id="querying-the-hard-way">
+<h2>Querying the <em>hard</em> way<a class="headerlink" href="#querying-the-hard-way" title="Permalink to this headline">¶</a></h2>
+<p>To get data from the CoCoMac database, you could browse the website, click through the dropdown boxes to get the desired data table and copy paste.
+However, this method will be a bit cumbersome for most users.
+Alternatively, you can pass customized SQL (structured query language) queries directly to the server (which is an excellent feature of the cocomac server!) and it will return query results in XML.
+This is by far a preferrable method, but does require knowledge of SQL and XML and then you have to deal with putting the results into some sort of container variable that will be amenable for further processing.</p>
+</div>
+<div class="section" id="querying-the-easy-way-using-cocotools">
+<h2>Querying the <em>easy</em> way using CoCoTools<a class="headerlink" href="#querying-the-easy-way-using-cocotools" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>CoCoTools makes performing custom CoCoMac queries simple. To query the CoCoMac server using CoCoTools users need only to use the function:</dt>
+<dd><a class="reference internal" href="api.html#cocotools.multi_map_ebunch" title="cocotools.multi_map_ebunch"><tt class="xref py py-func docutils literal"><span class="pre">cocotools.multi_map_ebunch()</span></tt></a></dd>
+</dl>
+<p>This function calls lower-level routines that:</p>
+<blockquote>
+<div><ul class="simple">
+<li>form SQL query from user&#8217;s command-line input, pass it to CoCoMac server</li>
+<li>parse resulting XML output</li>
+<li>caches XML results locally to speed up repeated queries (i.e. will check cache before querying server)</li>
+<li>populates a special container object, a multi-map ebunch, with query results</li>
+</ul>
+</div></blockquote>
+<p>This function takes 1 mandatory and 1 option inputs</p>
+<div class="section" id="search-type-mandatory">
+<h3>Search type (<em>mandatory</em>)<a class="headerlink" href="#search-type-mandatory" title="Permalink to this headline">¶</a></h3>
+<p>Mapping and Connectivity queries need to be performed seperately. Here you specify <cite>Mapping</cite> to run a mapping query or <cite>Connectivity</cite> for a connectivity query.</p>
+<p>Examples:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">map_bunch</span><span class="o">=</span><span class="n">coco</span><span class="o">.</span><span class="n">multi_map_ebunch</span><span class="p">(</span><span class="s">&#39;Mapping&#39;</span><span class="p">)</span>
+<span class="n">con_bunch</span><span class="o">=</span><span class="n">coco</span><span class="o">.</span><span class="n">multi_map_ebunch</span><span class="p">(</span><span class="s">&#39;Connectivity&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="subset-optional">
+<h3>Subset (<em>optional</em>)<a class="headerlink" href="#subset-optional" title="Permalink to this headline">¶</a></h3>
+<p>With the subset parameter you can specify the studies you want to query. By default <a class="reference internal" href="api.html#cocotools.multi_map_ebunch" title="cocotools.multi_map_ebunch"><tt class="xref py py-func docutils literal"><span class="pre">cocotools.multi_map_ebunch()</span></tt></a> will query the entire CoCoMac database.
+Querying certain mapping and connectivity studies will produce CoCoMac server timeouts. Therefore, it is preferrable to query from the following lists:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>coco.MAPPING_NON_TIMEOUTS</cite> lists all the mapping studies that do not lead to a server timeout</li>
+<li><cite>coco.CONNECTIVITY_NON_TIMEOUTS</cite> lists all the connectivity studies that do not lead to a server timeout</li>
+</ul>
+</div></blockquote>
+<p>Examples:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">map_bunch</span><span class="o">=</span><span class="n">coco</span><span class="o">.</span><span class="n">multi_map_ebunch</span><span class="p">(</span><span class="s">&#39;Mapping&#39;</span><span class="p">,</span> <span class="n">coco</span><span class="o">.</span><span class="n">MAPPING_NON_TIMEOUTS</span><span class="p">)</span>
+<span class="n">con_bunch</span><span class="o">=</span><span class="n">coco</span><span class="o">.</span><span class="n">multi_map_ebunch</span><span class="p">(</span><span class="s">&#39;Connectivity&#39;</span><span class="p">,</span> <span class="n">coco</span><span class="o">.</span><span class="n">CONNECTIVITY_NON_TIMEOUTS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="query-map-by-area">
+<h2>Query map by area<a class="headerlink" href="#query-map-by-area" title="Permalink to this headline">¶</a></h2>
+<p>To gather the data from the studies that are known to produce server timeouts (when querying the entire study), you will need to query the study, region by region
+This is done using the</p>
+<blockquote>
+<div><a class="reference internal" href="api.html#cocotools.query_maps_by_area" title="cocotools.query_maps_by_area"><tt class="xref py py-func docutils literal"><span class="pre">cocotools.query_maps_by_area()</span></tt></a></div></blockquote>
+<p>These lists are studies that are known to produce timeouts</p>
+<blockquote>
+<div><ul class="simple">
+<li>coco.MAPPING_TIMEOUTS</li>
+<li>coco.CONNECTIVITY_TIMEOUTS</li>
+</ul>
+</div></blockquote>
+<p>thus, where we querying the <em>non-timeout</em> studies using <strong>multi_map_ebunch</strong>, now we want to query the <em>timeouts</em> using:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">map_bunch_to</span><span class="o">=</span><span class="n">coco</span><span class="o">.</span><span class="n">query_maps_by_area</span><span class="p">(</span><span class="s">&#39;Mapping&#39;</span><span class="p">,</span> <span class="n">coco</span><span class="o">.</span><span class="n">MAPPING_TIMEOUTS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ebunch-format">
+<h2>ebunch format<a class="headerlink" href="#ebunch-format" title="Permalink to this headline">¶</a></h2>
+<p>You dont need to know much about the ebunch format. We borrowed it from NetworkX. It holds edges as tuples.
+It is a handy format for holding query results, but for CoCoTools, that is all this good for.</p>
+<p>In fact, the first thing you want to do after your query is returned is to place the output into
+one of two special networkx directed graph (digraph) objects</p>
+</div>
+<div class="section" id="mapgraphs-and-congraphs-cocotool-directed-graph-container-variables">
+<h2>mapgraphs and congraphs: CoCoTool directed graph container variables<a class="headerlink" href="#mapgraphs-and-congraphs-cocotool-directed-graph-container-variables" title="Permalink to this headline">¶</a></h2>
+<p>These are the special cocotools directed graph containers for holding mapping data (MapGraph) and connectivity data (ConGraph) that are much easier to address and manipulate using standard networkx commands and more amenable for CoCoTools processing.</p>
+<blockquote>
+<div><ul class="simple">
+<li>ConGraphs contain connectivity results, whereby each directed edge represents a single result or statement from a tracer study about the presence or absence of staining that would connect two regions.</li>
+<li>MapGraphs contain mapping results, whereby each edge represents a single statement about the logical relationship shared between two brain regions in the same or different parcellation schemes.</li>
+</ul>
+</div></blockquote>
+<p>To place your query results into them:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mapg</span><span class="o">=</span><span class="n">coco</span><span class="o">.</span><span class="n">MapGraph</span><span class="p">()</span>
+<span class="n">mapg</span><span class="o">=</span><span class="n">mapg</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">map_bunch</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>the same can be done for the connectivity data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cong</span><span class="o">=</span><span class="n">coco</span><span class="o">.</span><span class="n">ConGraph</span><span class="p">()</span>
+<span class="n">cong</span><span class="o">=</span><span class="n">cong</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">con_bunch</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="local-cache">
+<h2>local cache<a class="headerlink" href="#local-cache" title="Permalink to this headline">¶</a></h2>
+<p>By default CoCoTools creates 2 sqlite caches in ~/.cache directory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cocotools</span><span class="o">.</span><span class="n">sqlite</span>
+<span class="n">cocotools_area</span><span class="o">.</span><span class="n">sqlite</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="preprocessing.html" title="Pre-Processing Query Results"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="details.html" title="Processing Pipeline in Detail"
+             >previous</a> |</li>
+        <li><a href="index.html">CoCoTools 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="documentation.html" >CoCoTools&#8217;s documentation</a> &raquo;</li>
+          <li><a href="details.html" >Processing Pipeline in Detail</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Daniel Bliss, Rob Blumenfeld and Fernando Perez.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
